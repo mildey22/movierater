@@ -1,5 +1,7 @@
 package com.harjoitustyo.movierater.model;
 
-public interface RatingRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface RatingRepository extends CrudRepository<Rating, Long> {
 
 }
