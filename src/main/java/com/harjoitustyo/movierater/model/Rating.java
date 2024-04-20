@@ -15,7 +15,7 @@ public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long ratingId;
+    private Long ratingId;
     private String rating;
     @JsonIgnore
     @OneToMany(mappedBy = "rating")
