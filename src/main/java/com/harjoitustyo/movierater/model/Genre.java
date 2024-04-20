@@ -1,9 +1,14 @@
 package com.harjoitustyo.movierater.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Genre {
@@ -11,6 +16,9 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long genreId;
     private String genreName;
+    @JsonIgnore
+    @OneToMany(mappedBy = "genre")
+    private List<Movie> movies;
 
     public Genre() {
 
