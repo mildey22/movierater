@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long genreId;
+    private Long genreId;
     private String genreName;
     @JsonIgnore
     @OneToMany(mappedBy = "genre")
