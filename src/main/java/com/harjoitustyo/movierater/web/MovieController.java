@@ -50,7 +50,7 @@ public class MovieController {
         return "redirect:movies";
     }
 
-    @DeleteMapping("/delete/{movieId}")
+    @DeleteMapping("/deletemovie/{movieId}")
     public String deleteMovie(@PathVariable("movieId") Long movieId, Model model) {
         mRepository.deleteById(movieId);
         return "redirect:../movies";
