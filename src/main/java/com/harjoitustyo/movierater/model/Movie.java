@@ -1,9 +1,13 @@
 package com.harjoitustyo.movierater.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Movie {
@@ -12,11 +16,16 @@ public class Movie {
     private Long movieId;
     private String movieName;
     private String director;
+    @Column(name="release_year")
     private int year;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ratingId")
     private Rating rating;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genreId")
     private Genre genre;
 
-    public Movie () {
+    public Movie() {
         
     }
 

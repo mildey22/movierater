@@ -68,11 +68,6 @@ public class MovieraterApplication {
 
 			mRepository.save(new Movie("Terminator 2", "James Cameron", 1991, genre0, stars5));
 			mRepository.save(new Movie("Ted", "Seth McFarlane", 2012, genre2, stars4));
-			
-			log.info("fetch all movies");
-			for (Movie movie : mRepository.findAll()) {
-				log.info(movie.toString());
-			}
 
 		};
 
