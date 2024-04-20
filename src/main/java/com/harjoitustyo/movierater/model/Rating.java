@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Rating {
     private Long ratingId;
     private String rating;
     @JsonIgnore
-    @OneToMany(mappedBy = "rating")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rating")
     private List<Movie> movies;
 
     public Rating() {
