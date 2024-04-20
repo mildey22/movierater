@@ -39,6 +39,4 @@ public class GenreController {
         return "redirect../genres";
     }
 
-
-
 }
