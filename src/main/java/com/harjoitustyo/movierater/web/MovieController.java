@@ -77,6 +77,13 @@ public class MovieController {
         return "redirect:../movies";
     }
 
+    @GetMapping("/moviedeleteconfirmation/{movieId}")
+    public String confirmDelete(@PathVariable("movieId") Long movieId, Model model) {
+        model.addAttribute("movies", mRepository.findAll());
+        model.addAttribute("confirmMovieId", movieId);
+        return "movies";
+    }
+
     @GetMapping("/editmovie/{movieId}")
     public String editMovie(@PathVariable("movieId") Long movieId, Model model) {
         Objects.requireNonNull(movieId);

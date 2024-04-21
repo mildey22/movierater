@@ -50,9 +50,13 @@
                 <td sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Edit</a>
                 </td>
-                <td sec:authorize="hasAuthority('ADMIN')">
-                    <a th:href="@{/deletemovie/{movieId}(movieId=${movie.movieId})}">Delete</a>
-                </td>
+                <td><a th:href="@{/moviedeleteconfirmation/{movieId}(movieId=${movie.movieId})}">Delete</a>
+                    <!--Delete confirmation-->
+                    <div th:if="${confirmMovieId} == ${movie.movieId}">
+                        <span>Are you sure?</span>
+                        <a th:href="@{/deletemovie/{movieId}(movieId=${movie.movieId})}">Yes</a>
+                        <a href="/movies">No</a>
+                    </div>
             </tr>
         </tbody>
     </table>
