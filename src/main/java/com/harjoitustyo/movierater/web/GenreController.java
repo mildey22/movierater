@@ -1,5 +1,8 @@
 package com.harjoitustyo.movierater.web;
 
+import java.util.Objects;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +52,15 @@ public class GenreController {
         model.addAttribute("genres", gRepository.findAll());
         model.addAttribute("confirmId", genreId);
         return "genres";
+    }
+
+    @GetMapping("/moviesbygenre/{genreId}")
+    public String getAllProductByManufacturer(@PathVariable("genreId") Long genreId, Model model) {
+        Objects.requireNonNull(genreId);
+        Optional<Genre> genreOpt = gRepository.findById(genreId);
+        model.addAttribute("movies", genreOpt.get().getMovies());
+        model.addAttribute("genre", gRepository.findById(genreId).get());
+        return "moviesbygenre";
     }
 
 }
