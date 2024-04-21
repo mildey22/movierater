@@ -15,29 +15,36 @@ public class GenreController {
 
     @Autowired
     private GenreRepository gRepository;
-
+    //Shows all genres
     @GetMapping("/genres")
     public String genres(Model model) {
         model.addAttribute("genres", gRepository.findAll());
         return "genres";
     }
-
+    //Allows user to add a genre
     @GetMapping("/addgenre")
     public String addGenre(Model model) {
         model.addAttribute("genre", new Genre());
         return "addgenre";
     }
-
+    //Saves said genre
     @PostMapping("/savegenre")
     public String saveGenre(Genre genre) {
         gRepository.save(genre);
         return "redirect:genres";
     }
-
+    //Deletes chosen genre
     @GetMapping("/deletegenre/{genreId}")
     public String deleteGenre(@PathVariable("genreId") Long genreId, Model model) {
         gRepository.deleteById(genreId);
         return "redirect:../genres";
+    }
+
+    @GetMapping("/deleteconfirmation/{genreId}")
+    public String confirmDelete(@PathVariable("genreId") Long genreId, Model model) {
+        model.addAttribute("genres", gRepository.findAll());
+        model.addAttribute("confirmId", genreId);
+        return "genres";
     }
 
 }

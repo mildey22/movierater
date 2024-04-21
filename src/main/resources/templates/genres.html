@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!--Thymeleaf template for viewing all the genres-->
 
 <head>
     <meta charset="UTF-8" />
@@ -15,9 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each = "genre : ${genres}">
+            <tr th:each="genre : ${genres}">
                 <td th:text="${genre.genreName}"></td>
-                <td><a th:href="@{/deletegenre/{genreId}(genreId=${genre.genreId})}">Delete</a></td>
+                <td><a th:href="@{/deleteconfirmation/{genreId}(genreId=${genre.genreId})}">Delete</a>
+                    <!--Delete confirmation-->
+                    <div th:if="${confirmId} == ${genre.genreId}">
+                        <span>Are you sure? Deleting a genre deletes all movies with that genre!</span>
+                        <a th:href="@{/deletegenre/{genreId}(genreId=${genre.genreId})}">Yes</a>
+                        <a href="/genres">No</a>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
