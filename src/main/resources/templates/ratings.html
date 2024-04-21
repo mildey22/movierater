@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!--Thymeleaf template for viewing movies sorted by rating-->
 
 <head>
+    <meta charset="UTF-8" />
     <title>MovieR8r</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
         table {
             border-collapse: collapse;
@@ -24,29 +25,22 @@
 </head>
 
 <body>
-
-    <h1 th:text="'All ' + ${genre.genreName} + ' movies'"></h1>
-
+    <h1>Filter movies by rating</h1>
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Director</th>
-                <th>Year</th>
                 <th>Rating</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="movie : ${movies}">
-                <td th:text="${movie.movieName}"></td>
-                <td th:text="${movie.director}"></td>
-                <td th:text="${movie.year}"></td>
-                <td th:text="${movie.rating.ratingValue}"></td>
+            <tr th:each="rating : ${ratings}">
+                <td th:text="${rating.ratingValue}"></td>
+                <!--View all movies by selected rating-->
+                <td><a th:href="@{/moviesbyrating/{ratingId}(ratingId=${rating.ratingId})}">Movies</a></td>
             </tr>
         </tbody>
     </table>
-
-    <a href="/genres">Back to genres</a>
+    <div><a th:href="@{/movies}">Back to movies</a></div>
 
 </body>
 

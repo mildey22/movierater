@@ -26,7 +26,7 @@ public class WebSecurityConfig {
         http
                 // Ensures the main movie list is visible to non-signed-in users.
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/index", "/", "/movies", "/genres", "/moviesbygenre/**").permitAll()
+                        .requestMatchers("/index", "/", "/movies", "/genres", "/ratings", "/moviesbyrating/**", "/moviesbygenre/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(formlogin -> formlogin
                         .loginPage("/login")

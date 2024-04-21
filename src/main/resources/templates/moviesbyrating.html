@@ -25,7 +25,7 @@
 
 <body>
 
-    <h1 th:text="'All ' + ${genre.genreName} + ' movies'"></h1>
+    <h1 th:text="'All movies with ' + ${rating.numberOfStars} + ' stars.'"></h1>
 
     <table>
         <thead>
@@ -33,7 +33,7 @@
                 <th>Title</th>
                 <th>Director</th>
                 <th>Year</th>
-                <th>Rating</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
@@ -41,12 +41,12 @@
                 <td th:text="${movie.movieName}"></td>
                 <td th:text="${movie.director}"></td>
                 <td th:text="${movie.year}"></td>
-                <td th:text="${movie.rating.ratingValue}"></td>
+                <td th:text="${movie.genre.genreName}"></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="/genres">Back to genres</a>
+    <a href="/ratings">Back to ratings</a>
 
 </body>
 

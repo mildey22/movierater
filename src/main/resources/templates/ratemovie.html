@@ -34,7 +34,7 @@
 
                 <label for="ratings">Rating</label>
                 <select id="ratings" th:field="*{rating}" class="form-control">
-                    <option th:each="rating: ${ratings}" th:value="${rating.ratingId}" th:text="${rating.rating}">
+                    <option th:each="rating: ${ratings}" th:value="${rating.ratingId}" th:text="${rating.ratingValue}">
                     </option>
                 </select>
                 <div style="clear: both; display: block; height: 10px;"></div>

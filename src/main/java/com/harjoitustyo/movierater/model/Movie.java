@@ -42,11 +42,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public long getMovieId() {
+    public Long getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(long movieId) {
+    public void setMovieId(Long movieId) {
         this.movieId = movieId;
     }
 
@@ -95,5 +95,7 @@ public class Movie {
         return "Movie [movieId=" + movieId + ", movieName=" + movieName + ", director=" + director + ", year=" + year
                 + ", rating=" + rating + ", genre=" + genre + "]";
     }
+
+    
 
 }

@@ -55,7 +55,7 @@ public class GenreController {
     }
 
     @GetMapping("/moviesbygenre/{genreId}")
-    public String getAllProductByManufacturer(@PathVariable("genreId") Long genreId, Model model) {
+    public String getAllMoviesByGenre(@PathVariable("genreId") Long genreId, Model model) {
         Objects.requireNonNull(genreId);
         Optional<Genre> genreOpt = gRepository.findById(genreId);
         model.addAttribute("movies", genreOpt.get().getMovies());

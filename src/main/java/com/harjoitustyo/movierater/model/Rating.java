@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,18 +17,20 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ratingId;
-    private String rating;
+    private String ratingValue;
+    private int numberOfStars;
     // Connects rating to Movie entity
     @JsonIgnore
-    @OneToMany(mappedBy = "rating")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rating")
     private List<Movie> movies;
 
     public Rating() {
 
     }
 
-    public Rating(String rating) {
-        this.rating = rating;
+    public Rating(String ratingValue, int numberOfStars) {
+        this.ratingValue = ratingValue;
+        this.numberOfStars = numberOfStars;
     }
 
     public long getRatingId() {
@@ -38,12 +41,20 @@ public class Rating {
         this.ratingId = ratingId;
     }
 
-    public String getRating() {
-        return rating;
+    public String getRatingValue() {
+        return ratingValue;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setRating(String ratingValue) {
+        this.ratingValue = ratingValue;
+    }
+
+    public int getNumberOfStars() {
+        return numberOfStars;
+    }
+
+    public void setNumberOfStars(int numberOfStars) {
+        this.numberOfStars = numberOfStars;
     }
 
     public List<Movie> getMovies() {

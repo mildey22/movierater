@@ -56,11 +56,11 @@ public class MovieraterApplication {
 			// Saves the five star rating system for the application
 			log.info("Save the ratings");
 
-			Rating stars1 = new Rating("*");
-			Rating stars2 = new Rating("**");
-			Rating stars3 = new Rating("***");
-			Rating stars4 = new Rating("****");
-			Rating stars5 = new Rating("*****");
+			Rating stars1 = new Rating("*", 1);
+			Rating stars2 = new Rating("**", 2);
+			Rating stars3 = new Rating("***", 3);
+			Rating stars4 = new Rating("****", 4);
+			Rating stars5 = new Rating("*****", 5);
 
 			rRepository.save(stars1);
 			rRepository.save(stars2);

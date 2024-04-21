@@ -46,7 +46,7 @@
                 <td th:text="${movie.director}"></td>
                 <td th:text="${movie.year}"></td>
                 <td th:text="${movie.genre.genreName}"></td>
-                <td th:text="${movie.rating.rating}"></td>
+                <td th:text="${movie.rating.ratingValue}"></td>
                 <td sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Edit</a>
                 </td>
@@ -62,6 +62,8 @@
     </table>
     <div><a th:href="@{/ratemovie}">Rate a movie!</a></div>
     <div><a th:href="@{/genres}">View genres</a></div>
+    <div><a th:href="@{/ratings}">Filter movies by rating</a></div>
+
 
 </body>
 
