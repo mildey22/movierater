@@ -52,6 +52,7 @@ public class MovieController {
     }
 
     // Save a movie endpoint with validation
+    @SuppressWarnings("null")
     @PostMapping("/savemovie")
     public String save(@Valid Movie movie, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -86,6 +87,7 @@ public class MovieController {
     }
 
     // Edit movie validation
+    @SuppressWarnings("null")
     @PostMapping("/editmovie/{movieId}")
     public String editedMovieSave(@PathVariable("movieId") Long movieId,
             @Valid Movie movie, BindingResult bindingResult, Model model) {
