@@ -42,7 +42,7 @@ public class MovieController {
         model.addAttribute("movies", mRepository.findAll());
         return "movies";
     }
-
+    //Endpoint to adding a new movie
     @GetMapping("/ratemovie")
     public String rateMovie(Model model) {
         model.addAttribute("movie", new Movie());
@@ -70,20 +70,20 @@ public class MovieController {
         mRepository.save(movie);
         return "redirect:movies";
     }
-
+    //Deleting a movie by id
     @GetMapping("/deletemovie/{movieId}")
     public String deleteMovie(@PathVariable("movieId") Long movieId, Model model) {
         mRepository.deleteById(movieId);
         return "redirect:../movies";
     }
-
+    //Delete confirmation endpoint
     @GetMapping("/moviedeleteconfirmation/{movieId}")
     public String confirmDelete(@PathVariable("movieId") Long movieId, Model model) {
         model.addAttribute("movies", mRepository.findAll());
         model.addAttribute("confirmMovieId", movieId);
         return "movies";
     }
-
+    //Editing a movie by id
     @GetMapping("/editmovie/{movieId}")
     public String editMovie(@PathVariable("movieId") Long movieId, Model model) {
         Objects.requireNonNull(movieId);
