@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>MovieR8r</title>
+</head>
+
+<body>
+
+    <h1>Edit movie details</h1>
+
+    <form action="#" th:action="@{/editmovie/{movieId}(movieId=*{movieId})}" th:object="${movie}" method="post">
+
+        <input type="hidden" th:field="*{movieId}" />
+        <label for="title">Title</label>
+        <input type="text" id="movieName" th:field="*{movieName}" class="form-control" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+
+        <label for="title">Director</label>
+        <input type="text" id="director" th:field="*{director}" class="form-control" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+
+        <label for="title">Year of release</label>
+        <input type="text" id="year" th:field="*{year}" class="form-control" />
+        <div style="clear: both; display: block; height: 10px;"></div>
+
+        <label for="genrelist">Genre</label>
+        <select id="genres" th:field="*{genre}" class="form-control">
+            <option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}"></option>
+        </select>
+        <div style="clear: both; display: block; height: 10px;"></div>
+
+        <label for="title">Rating</label>
+        <select id="ratings" th:field="*{rating}" class="form-control">
+            <option th:each="rating: ${ratings}" th:value="${rating.ratingId}" th:text="${rating.rating}"></option>
+        </select>
+        <div style="clear: both; display: block; height: 10px;"></div>
+
+        <input type="submit" class="btn btn-primary" value="Save" />
+        <a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Reset</a>
+
+    </form>
+
+    <a href="/movies">Back to movies</a>
+
+</body>
+
+</html>

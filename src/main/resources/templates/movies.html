@@ -25,13 +25,13 @@
                 <td th:text="${movie.year}"></td>
                 <td th:text="${movie.genre.genreName}"></td>
                 <td th:text="${movie.rating.rating}"></td>
+                <td><a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Edit</a></td>
                 <td><a th:href="@{/deletemovie/{movieId}(movieId=${movie.movieId})}">Delete</a></td>
             </tr>
         </tbody>
     </table>
     <div><a th:href="@{/ratemovie}">Rate a movie!</a></div>
     <div><a th:href="@{/genres}">View genres</a></div>
-    <div><a th:href="@{/addgenre}">Add a genre</a></div>
 
 </body>
 

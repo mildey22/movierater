@@ -19,10 +19,8 @@ public class Movie {
     @Column(name="release_year")
     private int year;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ratingId")
     private Rating rating;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "genreId")
     private Genre genre;
 
     public Movie() {

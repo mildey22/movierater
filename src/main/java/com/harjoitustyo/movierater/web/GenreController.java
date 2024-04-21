@@ -1,8 +1,8 @@
 package com.harjoitustyo.movierater.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.harjoitustyo.movierater.model.Genre;
 import com.harjoitustyo.movierater.model.GenreRepository;
 
+@Controller
 public class GenreController {
 
     @Autowired
@@ -33,10 +34,10 @@ public class GenreController {
         return "redirect:genres";
     }
 
-    @DeleteMapping("/deletegenre/{genreId}")
+    @GetMapping("/deletegenre/{genreId}")
     public String deleteGenre(@PathVariable("genreId") Long genreId, Model model) {
         gRepository.deleteById(genreId);
-        return "redirect../genres";
+        return "redirect:../genres";
     }
 
 }

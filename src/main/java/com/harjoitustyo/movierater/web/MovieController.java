@@ -11,7 +11,6 @@ import com.harjoitustyo.movierater.model.Movie;
 import com.harjoitustyo.movierater.model.MovieRepository;
 import com.harjoitustyo.movierater.model.RatingRepository;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,13 +43,13 @@ public class MovieController {
         return "ratemovie";
     }
 
-    @PostMapping("/ratemovie")
-    public String saveMovie(Movie movie) {
+    @PostMapping("/savemovie")
+    public String save(Movie movie) {
         mRepository.save(movie);
         return "redirect:movies";
     }
 
-    @DeleteMapping("/deletemovie/{movieId}")
+    @GetMapping("/deletemovie/{movieId}")
     public String deleteMovie(@PathVariable("movieId") Long movieId, Model model) {
         mRepository.deleteById(movieId);
         return "redirect:../movies";

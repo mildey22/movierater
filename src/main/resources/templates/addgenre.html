@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>MovieR8r</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add a genre</h1>
+        <div class="col-md-4">
+            <form th:object="${genre}" th:action="@{savegenre}" action="#" method="post">
+                <label for="genreName">Name</label>
+                <input type="text" id="genreName" th:field="*{genreName}" class="form-control" />
+                <div style="clear: both; display: block; height: 10px;"></div>
+                <input type="submit" class="btn btn-primary" value="Save"></input>
+            </form>
+        </div>
+    </div>
+    <div><a th:href="@{/genres}">Back to genres</a></div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>MovieR8r</title>
+</head>
+
+<body>
+    <h1>Genres</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "genre : ${genres}">
+                <td th:text="${genre.genreName}"></td>
+                <td><a th:href="@{/deletegenre/{genreId}(genreId=${genre.genreId})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div><a th:href="@{/addgenre}">Add a genre</a></div>
+    <div><a th:href="@{/movies}">Back to movies</a></div>
+
+</body>
+
+</html>
