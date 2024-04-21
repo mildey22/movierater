@@ -84,7 +84,20 @@ public class MovieController {
     }
 
     @PostMapping("/editmovie/{movieId}")
-    public String editedMovieSave(@PathVariable("movieId") Long movieId, Movie movie, Model model) {
+    public String editedMovieSave(@PathVariable("movieId") Long movieId, 
+    @Valid Movie movie, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            Objects.requireNonNull(bindingResult.getFieldError());
+            if ((bindingResult.getFieldError().getDefaultMessage().equals("message"))) {
+                model.addAttribute("yearErrorMessage", "A year is needed");
+            } else {
+                model.addAttribute("yearErrorMessage", "Year must be a number greater or equal to 1888.");
+            }
+            model.addAttribute("genres", gRepository.findAll());
+            model.addAttribute("ratings", rRepository.findAll());
+            return "editmovie";
+        }
+        Objects.requireNonNull(movie);
         mRepository.save(movie);
         return "redirect:/movies";
     }
