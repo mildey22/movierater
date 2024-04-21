@@ -14,9 +14,6 @@ public class MovieUser {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Column(name = "email", nullable = false)
-    private String email;
-
     @Column(name = "password", nullable = false)
     private String passwordHash;
 
@@ -26,9 +23,8 @@ public class MovieUser {
     public MovieUser() {
     }
 
-    public MovieUser(String username, String email, String passwordHash, String role) {
+    public MovieUser(String username, String passwordHash, String role) {
         this.username = username;
-        this.email = email;
         this.passwordHash = passwordHash;
         this.role = role;
     }
@@ -47,14 +43,6 @@ public class MovieUser {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPasswordHash() {

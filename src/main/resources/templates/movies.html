@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8" />
     <title>MovieR8r</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
     <h1>MovieR8r</h1>
+    <div>Remember to log in for full functionality!</div>
+    
     <table>
         <thead>
             <tr>
@@ -16,17 +34,22 @@
                 <th>Year</th>
                 <th>Genre</th>
                 <th>Rating</th>
+                <th sec:authorize="hasAuthority('ADMIN')"></th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each = "movie : ${movies}">
+            <tr th:each="movie : ${movies}">
                 <td th:text="${movie.movieName}"></td>
-                <td th:text="${movie.director}"></td>  
+                <td th:text="${movie.director}"></td>
                 <td th:text="${movie.year}"></td>
                 <td th:text="${movie.genre.genreName}"></td>
                 <td th:text="${movie.rating.rating}"></td>
-                <td><a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Edit</a></td>
-                <td><a th:href="@{/deletemovie/{movieId}(movieId=${movie.movieId})}">Delete</a></td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Edit</a>
+                </td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/deletemovie/{movieId}(movieId=${movie.movieId})}">Delete</a>
+                </td>
             </tr>
         </tbody>
     </table>

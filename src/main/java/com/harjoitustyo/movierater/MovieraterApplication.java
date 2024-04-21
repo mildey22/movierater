@@ -73,11 +73,11 @@ public class MovieraterApplication {
 
 			log.info("create ADMIN and USER users");
 
-			MovieUser user0 = new MovieUser("admin", "admin@movier8r.com",
+			MovieUser user0 = new MovieUser("admin",
 					"$2a$10$ARzJyF.BwH.QvRL53MLLtuS5GEbwfihgXxRMT.K46NBgAKwbl0Mi2",
 					"ADMIN");
 
-			MovieUser user1 = new MovieUser("user", "user@movier8r.com",
+			MovieUser user1 = new MovieUser("user",
 					"$2a$10$CllNFI1aaX25UnMaEKP5Yeq.dNzW15FAJW6uYokVRGlXuM7WCljaK",
 					"USER");
 
