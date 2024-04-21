@@ -5,18 +5,19 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import com.harjoitustyo.movierater.model.GenreRepository;
 import com.harjoitustyo.movierater.model.Movie;
 import com.harjoitustyo.movierater.model.MovieRepository;
 import com.harjoitustyo.movierater.model.RatingRepository;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
 
 @Controller
 public class MovieController {
@@ -35,12 +36,12 @@ public class MovieController {
         return "login";
     }
 
-    @GetMapping({"/", "/index", "/movies"})
+    @GetMapping({ "/", "/index", "/movies" })
     public String movies(Model model) {
         model.addAttribute("movies", mRepository.findAll());
         return "movies";
     }
-    
+
     @GetMapping("/ratemovie")
     public String rateMovie(Model model) {
         model.addAttribute("movie", new Movie());
@@ -50,7 +51,19 @@ public class MovieController {
     }
 
     @PostMapping("/savemovie")
-    public String save(Movie movie) {
+    public String save(@Valid Movie movie, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            Objects.requireNonNull(bindingResult.getFieldError());
+            if ((bindingResult.getFieldError().getDefaultMessage().equals("message"))) {
+                model.addAttribute("yearErrorMessage", "A year is needed");
+            } else {
+                model.addAttribute("yearErrorMessage", "Year must be a number greater or equal to 1888.");
+            }
+            model.addAttribute("genres", gRepository.findAll());
+            model.addAttribute("ratings", rRepository.findAll());
+            return "ratemovie";
+        }
+        Objects.requireNonNull(movie);
         mRepository.save(movie);
         return "redirect:movies";
     }
@@ -75,8 +88,5 @@ public class MovieController {
         mRepository.save(movie);
         return "redirect:/movies";
     }
-    
-    
-    
 
 }

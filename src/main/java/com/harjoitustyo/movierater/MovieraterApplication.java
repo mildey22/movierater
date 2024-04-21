@@ -70,6 +70,7 @@ public class MovieraterApplication {
 
 			mRepository.save(new Movie("Terminator 2", "James Cameron", 1991, genre0, stars5));
 			mRepository.save(new Movie("Ted", "Seth McFarlane", 2012, genre2, stars4));
+			mRepository.save(new Movie("Top Gun", "Tony Scott", 1986, genre0, stars2));
 
 			log.info("create ADMIN and USER users");
 

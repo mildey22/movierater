@@ -37,6 +37,10 @@
         </select>
         <div style="clear: both; display: block; height: 10px;"></div>
 
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{name}"></p>
+        <p th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></p>
+        <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></p>
+
         <input type="submit" class="btn btn-primary" value="Save" />
         <a th:href="@{/editmovie/{movieId}(movieId=${movie.movieId})}">Reset</a>
 

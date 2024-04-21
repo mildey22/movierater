@@ -7,14 +7,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.DecimalMin;
 
 @Entity
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long movieId;
+    @NotBlank(message = "A name is needed")
     private String movieName;
+    @NotBlank(message = "A director is needed")
     private String director;
+    @NotNull(message = "message")
+    @DecimalMin(value = "1888", message = "The first motion picture was made in 1888.")
     @Column(name="release_year")
     private int year;
     @ManyToOne(fetch = FetchType.LAZY)
