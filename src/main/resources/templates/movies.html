@@ -6,22 +6,25 @@
     <meta charset="UTF-8" />
     <title>MovieR8r</title>
     <!--Could not get the CSS file  to work for some reason so all the styles are very unflatteringly in the head section-->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <!--favicon.ico doesn't work either. Attempted putting it in static and the resources folder. Neither works-->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style>
         table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+    border-collapse: collapse;
+    width: 100%;
+}
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
     </style>
 </head>
 
@@ -61,7 +64,7 @@
         </tbody>
     </table>
     <div><a th:href="@{/ratemovie}">Rate a movie!</a></div>
-    <div><a th:href="@{/genres}">View genres</a></div>
+    <div><a th:href="@{/genres}">View genres and filter by genre</a></div>
     <div><a th:href="@{/ratings}">Filter movies by rating</a></div>
 
 
