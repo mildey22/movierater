@@ -14,6 +14,7 @@ import com.harjoitustyo.movierater.model.RatingRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
@@ -29,7 +30,12 @@ public class MovieController {
     @Autowired
     private RatingRepository rRepository;
 
-    @GetMapping({"/", "/movies"})
+    @RequestMapping(value = "/login")
+    public String logIn() {
+        return "login";
+    }
+
+    @GetMapping({"/", "/index", "/movies"})
     public String movies(Model model) {
         model.addAttribute("movies", mRepository.findAll());
         return "movies";

@@ -27,6 +27,7 @@
 			 <select id="genres" th:field="*{genre}" class="form-control">
        			<option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}"></option>
     		</select>
+            <div>Can't find your movie's genre? <a th:href="@{/addgenre}">Add it here!</a></div>
             <div style="clear: both; display: block; height: 10px;"></div>
 
             <label for="ratings">Rating</label>
@@ -39,7 +40,7 @@
             </form>
         </div>
     </div>
-    <div><a th:href="@{/movies}">Back</a></div>
+    <div><a th:href="@{/movies}">Back to movies</a></div>
 </body>
 
 </html>

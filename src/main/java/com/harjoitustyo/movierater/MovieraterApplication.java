@@ -11,8 +11,10 @@ import com.harjoitustyo.movierater.model.Genre;
 import com.harjoitustyo.movierater.model.GenreRepository;
 import com.harjoitustyo.movierater.model.Movie;
 import com.harjoitustyo.movierater.model.MovieRepository;
+import com.harjoitustyo.movierater.model.MovieUser;
 import com.harjoitustyo.movierater.model.Rating;
 import com.harjoitustyo.movierater.model.RatingRepository;
+import com.harjoitustyo.movierater.model.UserRepository;
 
 @SpringBootApplication
 public class MovieraterApplication {
@@ -24,9 +26,9 @@ public class MovieraterApplication {
 	}
 
 	@Bean
-	public CommandLineRunner movieDemo(MovieRepository mRepository, GenreRepository gRepository, RatingRepository rRepository) {
+	public CommandLineRunner movieDemo(MovieRepository mRepository, GenreRepository gRepository, RatingRepository rRepository, UserRepository uRepository) {
 		return (args) -> {
-			log.info("save a couple of genres");
+			log.info("save some demo genres");
 
 			Genre genre0 = new Genre("Action");
 			Genre genre1 = new Genre("Adventure");
@@ -64,12 +66,23 @@ public class MovieraterApplication {
 			rRepository.save(stars4);
 			rRepository.save(stars5);
 
-			log.info("Save some movies");
+			log.info("Save some demo movies");
 
 			mRepository.save(new Movie("Terminator 2", "James Cameron", 1991, genre0, stars5));
 			mRepository.save(new Movie("Ted", "Seth McFarlane", 2012, genre2, stars4));
 
-			log.info("Finished creating demo movies");
+			log.info("create ADMIN and USER users");
+
+			MovieUser user0 = new MovieUser("admin", "admin@movier8r.com",
+					"$2a$10$ARzJyF.BwH.QvRL53MLLtuS5GEbwfihgXxRMT.K46NBgAKwbl0Mi2",
+					"ADMIN");
+
+			MovieUser user1 = new MovieUser("user", "user@movier8r.com",
+					"$2a$10$CllNFI1aaX25UnMaEKP5Yeq.dNzW15FAJW6uYokVRGlXuM7WCljaK",
+					"USER");
+
+			uRepository.save(user0);
+			uRepository.save(user1);
 
 		};
 
