@@ -36,6 +36,7 @@ public class MovieController {
         return "login";
     }
 
+    // Endpoints to view the front page
     @GetMapping({ "/", "/index", "/movies" })
     public String movies(Model model) {
         model.addAttribute("movies", mRepository.findAll());
@@ -50,6 +51,7 @@ public class MovieController {
         return "ratemovie";
     }
 
+    // Save a movie endpoint with validation
     @PostMapping("/savemovie")
     public String save(@Valid Movie movie, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -83,9 +85,10 @@ public class MovieController {
         return "editmovie";
     }
 
+    // Edit movie validation
     @PostMapping("/editmovie/{movieId}")
-    public String editedMovieSave(@PathVariable("movieId") Long movieId, 
-    @Valid Movie movie, BindingResult bindingResult, Model model) {
+    public String editedMovieSave(@PathVariable("movieId") Long movieId,
+            @Valid Movie movie, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             Objects.requireNonNull(bindingResult.getFieldError());
             if ((bindingResult.getFieldError().getDefaultMessage().equals("message"))) {

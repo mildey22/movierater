@@ -11,12 +11,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+//Genre entity class with attributes
 @Entity
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long genreId;
     private String genreName;
+    //Connects genre to movie entity
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
     private List<Movie> movies;

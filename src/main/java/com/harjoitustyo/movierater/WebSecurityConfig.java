@@ -12,6 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.harjoitustyo.movierater.web.UserDetailService;
 
+//Security config for the app
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
@@ -23,15 +24,16 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
+                // Ensures the main movie list is visible to non-signed-in users.
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/index", "/", "/genres").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(formlogin -> formlogin
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/index", true)
-                    .permitAll())
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/index", true)
+                        .permitAll())
                 .logout(logout -> logout
-                    .permitAll());
+                        .permitAll());
         return http.build();
     }
 

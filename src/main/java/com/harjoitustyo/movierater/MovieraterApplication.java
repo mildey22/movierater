@@ -20,14 +20,15 @@ import com.harjoitustyo.movierater.model.UserRepository;
 public class MovieraterApplication {
 	private static final Logger log = LoggerFactory.getLogger(MovieraterApplication.class);
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(MovieraterApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner movieDemo(MovieRepository mRepository, GenreRepository gRepository, RatingRepository rRepository, UserRepository uRepository) {
+	public CommandLineRunner movieDemo(MovieRepository mRepository, GenreRepository gRepository,
+			RatingRepository rRepository, UserRepository uRepository) {
 		return (args) -> {
+			// Saves some demo genres for the user
 			log.info("save some demo genres");
 
 			Genre genre0 = new Genre("Action");
@@ -40,7 +41,7 @@ public class MovieraterApplication {
 			Genre genre7 = new Genre("Romance");
 			Genre genre8 = new Genre("Science Fiction");
 			Genre genre9 = new Genre("Thriller");
-			
+
 			gRepository.save(genre0);
 			gRepository.save(genre1);
 			gRepository.save(genre2);
@@ -52,6 +53,7 @@ public class MovieraterApplication {
 			gRepository.save(genre8);
 			gRepository.save(genre9);
 
+			// Saves the five star rating system for the application
 			log.info("Save the ratings");
 
 			Rating stars1 = new Rating("*");
@@ -66,20 +68,23 @@ public class MovieraterApplication {
 			rRepository.save(stars4);
 			rRepository.save(stars5);
 
+			// Saves some demo movies as an example
 			log.info("Save some demo movies");
 
 			mRepository.save(new Movie("Terminator 2", "James Cameron", 1991, genre0, stars5));
 			mRepository.save(new Movie("Ted", "Seth McFarlane", 2012, genre2, stars4));
 			mRepository.save(new Movie("Top Gun", "Tony Scott", 1986, genre0, stars2));
 
+			// Creates users for the app. They have the same function as of now.
+			// Passwords for admin and user are 4815162342 and thedharmainitiative, respectively
 			log.info("create ADMIN and USER users");
 
 			MovieUser user0 = new MovieUser("admin",
-					"$2a$10$ARzJyF.BwH.QvRL53MLLtuS5GEbwfihgXxRMT.K46NBgAKwbl0Mi2",
+					"$2a$10$C0JR8yMKxZYLUvkv9VAyLe9Agv5vrLKOgd9eIE8IVGNhHujflOKne",
 					"ADMIN");
 
 			MovieUser user1 = new MovieUser("user",
-					"$2a$10$CllNFI1aaX25UnMaEKP5Yeq.dNzW15FAJW6uYokVRGlXuM7WCljaK",
+					"$2a$10$Lb9skov9Qf3TGpTsxrwVU.ZYI8a0dAVaXhJMawtqTRd7fk1nrfeDG",
 					"USER");
 
 			uRepository.save(user0);

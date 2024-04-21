@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.DecimalMin;
 
+//Movie attributes and validation
 @Entity
 public class Movie {
     @Id
@@ -22,7 +23,7 @@ public class Movie {
     private String director;
     @NotNull(message = "message")
     @DecimalMin(value = "1888", message = "The first motion picture was made in 1888.")
-    @Column(name="release_year")
+    @Column(name = "release_year")
     private int year;
     @ManyToOne(fetch = FetchType.LAZY)
     private Rating rating;
@@ -30,7 +31,7 @@ public class Movie {
     private Genre genre;
 
     public Movie() {
-        
+
     }
 
     public Movie(String movieName, String director, int year, Genre genre, Rating rating) {

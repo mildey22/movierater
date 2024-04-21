@@ -17,6 +17,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ratingId;
     private String rating;
+    // Connects rating to Movie entity
     @JsonIgnore
     @OneToMany(mappedBy = "rating")
     private List<Movie> movies;
@@ -52,6 +53,5 @@ public class Rating {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
-
 
 }
