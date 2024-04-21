@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!--Allows the user to edit a specific movie-->
 
 <head>
     <meta charset="UTF-8" />
@@ -36,7 +37,7 @@
             <option th:each="rating: ${ratings}" th:value="${rating.ratingId}" th:text="${rating.rating}"></option>
         </select>
         <div style="clear: both; display: block; height: 10px;"></div>
-
+        <!--Possible errors from validation-->
         <p th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}"></p>
         <p th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></p>
         <p th:if="${#fields.hasErrors('year')}" th:text="${yearErrorMessage}"></p>

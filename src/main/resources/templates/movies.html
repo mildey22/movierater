@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<!--Shows all currently saved movies-->
 
 <head>
     <meta charset="UTF-8" />
     <title>MovieR8r</title>
+    <!--Styles for the table. CSS is very limited on this project :D-->
     <style>
         table {
             border-collapse: collapse;
             width: 100%;
         }
-        
-        th, td {
+
+        th,
+        td {
             padding: 8px;
             text-align: left;
             border: 1px solid #ddd;
         }
-        
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
@@ -25,7 +28,7 @@
 <body>
     <h1>MovieR8r</h1>
     <div>Remember to log in for full functionality!</div>
-    
+
     <table>
         <thead>
             <tr>
